@@ -2,13 +2,6 @@ import Sequelize from 'sequelize';
 import schema from '../db.js';
 
 const orderSchema = schema.define("orders", {
-    id:{
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        field: 'id'
-    },
-
     user_id:{
         type: Sequelize.INTEGER,
         allowNull: false
@@ -34,5 +27,7 @@ const orderSchema = schema.define("orders", {
         allowNull: false
     }
 });
+
+schema.sync();
 
 export default orderSchema;

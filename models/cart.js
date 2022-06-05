@@ -31,4 +31,6 @@ const cartSchema = schema.define("cart", {
     }
 });
 
+schema.sync();
+
 export default cartSchema;
