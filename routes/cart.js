@@ -14,7 +14,8 @@ router.get('/', fetchUser, async (req, res) => {
         
         const cartItems = await Cart.findAll({
             where:{
-                user_id: req.user_id
+                user_id: req.user_id,
+                is_completed: false
             }
         });
 

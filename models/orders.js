@@ -8,7 +8,7 @@ const orderSchema = schema.define("orders", {
     },
 
     ingredients_used:{
-        type: Sequelize.ARRAY,
+        type: Sequelize.ARRAY(Sequelize.STRING),
         allowNull: false
     },
 
