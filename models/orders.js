@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
 import schema from '../db.js';
 
-const orderSchema = schema.define("users", {
+const orderSchema = schema.define("orders", {
     id:{
         type: Sequelize.INTEGER,
         primaryKey: true,

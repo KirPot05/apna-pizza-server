@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
 import schema from '../db.js';
 
-const cartSchema = schema.define("users", {
+const cartSchema = schema.define("cart", {
     id:{
         type: Sequelize.INTEGER,
         primaryKey: true,
