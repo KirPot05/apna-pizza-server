@@ -12,11 +12,6 @@ const orderSchema = schema.define("orders", {
         allowNull: false
     },
 
-    date:{
-        type: Sequelize.DATE,
-        allowNull: false
-    },
-
     address:{
         type: Sequelize.TEXT,
         allowNull: false

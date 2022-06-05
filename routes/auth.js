@@ -21,10 +21,9 @@ router.post('/login',
             return res.status(400).json(failed_response(500, "Something went wrong", errors.array()));
         }
 
-        const { email, password } = req.body;
-
         try {
-
+            
+            const { email, password } = req.body;
             let userData;
             
             if (email != null && email != "") {
@@ -38,7 +37,6 @@ router.post('/login',
 
             // Compares hashed password in DB and entered password
             const passwordMatches = await isCorrectPassword(password, userData.password);
-
             if (!passwordMatches) {
                 return res.status(500).json({ error: "Please enter valid credentials" });
             }
@@ -93,9 +91,7 @@ router.post('/create',
             } 
 
             const { name, email, password } = req.body;
-
             const secPassword = await encryptPassword(password);
-
             userData = {
                 name,
                 email,
@@ -104,7 +100,6 @@ router.post('/create',
             
             // DB operation to create user
             const user = await User.create(userData);
-
             const data = {
                 id: user.id
             }
@@ -113,13 +108,11 @@ router.post('/create',
             res.json(success_response(200, "Registration successful", authToken));
 
         }
-
         catch (error) {
             console.error(error.message);
             return res.json(failed_response(500, "Internal server error"));
         }
-
-
-});
+    }
+);
 
 export default router;

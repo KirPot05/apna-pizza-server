@@ -2,13 +2,6 @@ import Sequelize from 'sequelize';
 import schema from '../db.js';
 
 const cartSchema = schema.define("cart", {
-    id:{
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        field: 'id'
-    },
-
     user_id:{
         type: Sequelize.INTEGER,
         allowNull: false
@@ -26,7 +19,7 @@ const cartSchema = schema.define("cart", {
     },
 
     pizza:{
-        type: Sequelize.ARRAY,
+        type: Sequelize.ARRAY(Sequelize.STRING),
         allowNull: false
     }
 });
