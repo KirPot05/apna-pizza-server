@@ -13,8 +13,11 @@ const ingredientsSchema = schema.define("ingredients", {
     },
 
     description: {
-        type: Sequelize.STRING,
-        allowNull: true
+        type: Sequelize.STRING
+    },
+
+    img_url:{
+        type: Sequelize.TEXT
     }
 
 });

@@ -12,6 +12,11 @@ const orderSchema = schema.define("orders", {
         allowNull: false
     },
 
+    amount:{
+        type: Sequelize.DOUBLE,
+        allowNull: false
+    },
+
     address:{
         type: Sequelize.TEXT,
         allowNull: false

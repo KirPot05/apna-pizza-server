@@ -1,6 +1,7 @@
 import { Router } from "express";
 import fetchUser from '../middleware/fetchUser.js';
 import Cart from '../models/cart.js';
+import Ingredients from '../models/ingredients.js';
 import { failed_response, success_response } from "../utils/response.js";
 import { body, validationResult } from "express-validator";
 
@@ -39,7 +40,6 @@ router.get('/', fetchUser, async (req, res) => {
 // Add pizzas to the cart
 router.post('/add', fetchUser, 
     [
-        body('price').isNumeric(),
         body('pizza').isArray()
     ],
 
@@ -51,8 +51,18 @@ router.post('/add', fetchUser,
 
     try{
 
-        const { price, pizza } = req.body;
+        const { pizza } = req.body;
 
+        let price = 100; //Base charge for each pizza
+
+        // Calculating the price of each pizza upon adding ingredients
+        for(let i=0; i<pizza.length; i++){
+            const item = pizza[i];
+            const ingredient = await Ingredients.findOne({where: {name: item}});
+            price += ingredient.price;
+        }
+        
+        
         const cartData = {
             user_id: req.user_id,
             price,

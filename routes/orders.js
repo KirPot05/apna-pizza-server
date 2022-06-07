@@ -44,7 +44,7 @@ router.post('/add', fetchUser,
         body('cart_item_id').isNumeric(),
     ],
     async (req, res) => {
-
+        // show errors
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json(failed_response(500, "Something went wrong", errors.array()));
@@ -66,8 +66,8 @@ router.post('/add', fetchUser,
                 const result = failed_response(400, "Cannot place the order");
                 return res.status(400).json(result);
             }
-
-            const orderItem = await Cart.findByPk(orderItemId[0]);
+            
+            const orderItem = await Cart.findByPk(cart_item_id);
 
             if(orderItem.length === 0){
                 const result = failed_response(400, "No such item found in cart");

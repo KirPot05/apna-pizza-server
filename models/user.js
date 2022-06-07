@@ -19,6 +19,6 @@ const userSchema = schema.define("users", {
     }
 });
 
-schema.sync()
+schema.sync();
 
 export default userSchema;
